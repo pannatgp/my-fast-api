@@ -8,7 +8,6 @@ from decimal import Decimal
 from models.database import Base
 from pydantic import BaseModel
 
-
 class DbInventory(Base):
     __tablename__ = "inventory"
     id = Column(Integer, primary_key=True, index=True)
