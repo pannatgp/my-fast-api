@@ -4,11 +4,14 @@ from sqlalchemy.orm import sessionmaker
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./my-fast-api.db"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thred": False})
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thred": False}
+)
 
 session_local = sessionmaker(autocommit=False, autoFlush=False, bind=engine)
 
 Base = declarative_base()
+
 
 def get_db():
     try:
@@ -16,4 +19,3 @@ def get_db():
         yield db
     finally:
         db.close()
-        
